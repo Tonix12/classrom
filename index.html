@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classrom</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 min-h-screen text-white font-sans flex flex-col m-0 p-0">
+
+<nav class="w-full bg-gray-800 border-b border-gray-700 p-4 flex justify-center space-x-4 sticky top-0 z-50 h-[70px] items-center">
+<button id="deskBtn" onclick="toggleLayout('desktop')" class="bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-sm shadow-md">🖥️ Desktop View</button>
+<button id="mobBtn" onclick="toggleLayout('mobile')" class="bg-gray-600 text-white font-bold py-2 px-6 rounded-lg text-sm shadow-md">📱 Mobile View</button>
+</nav>
+
+<div class="flex-grow w-full p-4 md:p-8 flex justify-center items-center overflow-y-auto">
+
+<div id="previewWindow" class="w-full max-w-7xl mx-auto bg-[#2e52f2] flex flex-col justify-between p-6 md:p-10 min-h-[680px] transition-all duration-300">
+
+<header class="w-full flex justify-between items-center mb-12">
+<div class="flex items-center space-x-2">
+<span class="w-2.5 h-2.5 bg-white rounded-full block"></span>
+<span class="font-bold text-sm tracking-wide">Bridge Collective</span>
+</div>
+<div class="text-xl font-bold tracking-tighter opacity-80 cursor-pointer">=</div>
+</header>
+
+<div id="gridWrapper" class="w-full grid grid-cols-4 items-stretch flex-grow gap-0 border border-white border-opacity-10">
+
+<div id="leftPanel" class="col-span-2 p-8 flex flex-col justify-center border-r border-white border-opacity-10 h-full">
+<h1 id="mainHeadline" class="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight tracking-tight">A classroom<br>for every child.</h1>
+<p class="mt-6 text-sm md:text-base text-white text-opacity-80 leading-relaxed max-w-md">We fund the schools, train the teachers, and measure what works — so every child we reach today becomes a graduate tomorrow.</p>
+</div>
+
+
+<div id="rightGrid" class="col-span-2 grid grid-cols-2 h-full">
+
+
+<div id="card1" class="p-8 flex flex-col justify-between min-h-[220px] border-b border-r border-white border-opacity-10">
+<div class="flex justify-between items-start">
+<span class="text-2xl opacity-70 font-light">÷</span>
+<span class="text-4xl font-bold">2.4M</span>
+</div>
+<div class="mt-auto">
+<h2 class="text-xs font-semibold uppercase tracking-wider">Students reached</h2>
+<p class="text-[11px] opacity-60 mt-1">Across 31 countries since 2011.</p>
+</div>
+</div>
+
+
+<div id="card2" class="p-8 flex flex-col justify-between min-h-[220px] border-b border-white border-opacity-10">
+<div class="flex justify-between items-start">
+<span class="text-2xl opacity-70 font-light">+</span>
+<span class="text-4xl font-bold">1,284</span>
+</div>
+<div class="mt-auto">
+<h2 class="text-xs font-semibold uppercase tracking-wider">Schools partnered</h2>
+<p class="text-[11px] opacity-60 mt-1">In 14 countries, from Kenya to Guatemala.</p>
+</div>
+</div>
+
+
+<div id="card3" class="p-8 flex flex-col justify-between min-h-[220px] border-r border-white border-opacity-10">
+<div class="flex justify-between items-start">
+<span class="text-2xl opacity-70 font-light">→</span>
+<span class="text-4xl font-bold">38K</span>
+</div>
+<div class="mt-auto">
+<h2 class="text-xs font-semibold uppercase tracking-wider">Teachers trained</h2>
+<p class="text-[11px] opacity-60 mt-1">Equipped with modern tools and technology.</p>
+</div>
+</div>
+
+
+<div id="card4" class="p-8 flex flex-col justify-between min-h-[220px]">
+<div class="flex justify-between items-start">
+<span class="text-2xl opacity-70 font-light">~</span>
+<span class="text-4xl font-bold">3.1×</span>
+</div>
+<div class="mt-auto">
+<h2 class="text-xs font-semibold uppercase tracking-wider">Graduation lift</h2>
+<p class="text-[11px] opacity-60 mt-1">Partner schools outperform national averages 3x.</p>
+</div>
+</div>
+
+</div>
+</div>
+
+<footer id="footerContainer" class="w-full flex justify-between items-center text-xs text-white text-opacity-60 mt-12">
+<div id="footCopy">© 2026 Bridge Collective</div>
+<div id="footCharity">Registered charity 12345678</div>
+</footer>
+
+</div>
+</div>
+
+
+<script>
+function toggleLayout(mode) {
+const windowFrame = document.getElementById('previewWindow');
+const gridWrapper = document.getElementById('gridWrapper');
+const leftPanel = document.getElementById('leftPanel');
+const mainHeadline = document.getElementById('mainHeadline');
+const rightGrid = document.getElementById('rightGrid');
+const footerContainer = document.getElementById('footerContainer');
+
+const card1 = document.getElementById('card1');
+const card2 = document.getElementById('card2');
+const card3 = document.getElementById('card3');
+const card4 = document.getElementById('card4');
+
+const deskBtn = document.getElementById('deskBtn');
+const mobBtn = document.getElementById('mobBtn');
+
+if (mode === 'desktop') {
+
+windowFrame.style.maxWidth = "1280px";
+gridWrapper.className = "w-full grid grid-cols-4 items-stretch flex-grow gap-0 border border-white border-opacity-10";
+leftPanel.className = "col-span-2 p-8 flex flex-col justify-center border-r border-white border-opacity-10 h-full";
+mainHeadline.className = "text-4xl md:text-5xl lg:text-7xl font-bold leading-tight tracking-tight";
+rightGrid.className = "col-span-2 grid grid-cols-2 h-full";
+
+card1.className = "p-8 flex flex-col justify-between min-h-[220px] border-b border-r border-white border-opacity-10";
+card2.className = "p-8 flex flex-col justify-between min-h-[220px] border-b border-white border-opacity-10";
+card3.className = "p-8 flex flex-col justify-between min-h-[220px] border-r border-white border-opacity-10";
+card4.className = "p-8 flex flex-col justify-between min-h-[220px]";
+
+footerContainer.className = "w-full flex justify-between items-center text-xs text-white text-opacity-60 mt-12";
+
+deskBtn.className = "bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-sm shadow-md";
+mobBtn.className = "bg-gray-600 text-white font-bold py-2 px-6 rounded-lg text-sm shadow-md";
+} else {
+
+windowFrame.style.maxWidth = "385px";
+gridWrapper.className = "w-full grid grid-cols-1 flex-grow border-none gap-0";
+leftPanel.className = "col-span-1 p-6 border-b border-white border-opacity-10";
+mainHeadline.className = "text-4xl font-bold leading-tight tracking-tight";
+rightGrid.className = "col-span-1 grid grid-cols-1 gap-0";
+
+
+card1.className = "p-6 flex flex-col justify-between min-h-[180px] border-b border-white border-opacity-10";
+card2.className = "p-6 flex flex-col justify-between min-h-[180px] border-b border-white border-opacity-10";
+card3.className = "p-6 flex flex-col justify-between min-h-[180px] border-b border-white border-opacity-10";
+card4.className = "p-6 flex flex-col justify-between min-h-[180px] border-b border-white border-opacity-10";
+
+footerContainer.className = "w-full flex flex-col items-center justify-center text-xs text-white text-opacity-60 mt-12 gap-2 text-center";
+
+mobBtn.className = "bg-blue-600 text-white font-bold py-2 px-6 rounded-lg text-sm shadow-md";
+deskBtn.className = "bg-gray-600 text-white font-bold py-2 px-6 rounded-lg text-sm shadow-md";
+}
+}
+</script>
+</body>
+</html>
